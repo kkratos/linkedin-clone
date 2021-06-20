@@ -1,1 +1,1 @@
-# linkedin-Clone in Reactjs (on going project)
+# linkedin-Clone in Reactjs

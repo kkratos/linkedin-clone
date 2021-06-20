@@ -9,8 +9,17 @@ import BusinessCenterIcon from '@material-ui/icons/BusinessCenter';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 
 import './Header.css'
+import { useDispatch } from 'react-redux';
+import { logout } from '../../features/userSlice';
+import { auth } from '../../firebase';
 
 function Header() {
+    const dispatch = useDispatch();
+    const logoutofApp = () => {
+        dispatch(logout())
+        auth.signOut();
+    }
+
     return (
         <div className="header">
             <div className="header__left">
@@ -26,7 +35,7 @@ function Header() {
                 <HeaderOption Icon={BusinessCenterIcon} title="Jobs" />
                 <HeaderOption Icon={ChatIcon} title="Message" />
                 <HeaderOption Icon={NotificationsIcon} title="Notification" />
-                <HeaderOption avatar="https://kansai-resilience-forum.jp/wp-content/uploads/2019/02/IAFOR-Blank-Avatar-Image-1.jpg" title="me" />
+                <HeaderOption avatar={true} title="me" onClick={logoutofApp} />
             </div>
         </div>
     )
